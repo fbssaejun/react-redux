@@ -12,7 +12,7 @@ const dispatch = useDispatch()
       <header className="App-header">
         Hello World!
         <h3>Counter: {counter}</h3>
-        <button onClick={() => dispatch(increment(13))}>+</button>
+        <button onClick={() => dispatch(increment())}>+</button>
         <button onClick={() => dispatch(decrement())}>-</button>
       </header>
     </div>

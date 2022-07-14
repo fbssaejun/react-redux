@@ -1,9 +1,9 @@
 // ACTIONS
-export const increment = (number) => {
+export const increment = () => {
   return {
     type: 'Increment',
     payload: {
-      number: number,
+      // Add as much as you want
       letter: 'D'
     }
   }
