@@ -14,3 +14,9 @@ export const decrement = () => {
     type: 'Decrement'
   }
 }
+
+export const reset = () => {
+  return {
+    type: 'Reset'
+  }
+}
