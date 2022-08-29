@@ -24,3 +24,19 @@ recipe = {
 
 // Answer 2
 
+import { produce } from 'immer'
+
+function addIngredient(recipe) {
+  return produce(recipe, draftRecipe => {
+    const index = recipe.ingredients.indexOf("egg")
+    draftRecipe.ingredients.push("cream")
+    draftRecipe.ingredients[index] = "egg white"
+  })
+}
+
+addIngredient(recipe)
+// =>
+// recipe = {
+//   name: "Spaghetti Bolognese",
+//   ingredients: ["egg white", "salt", "cream"]
+// }

@@ -1,5 +1,5 @@
-// Import composr and pipe from lodash library for writing cleaner functions calls wrapped inside function calls
-import { compose, pipe} from 'lodash/fp';
+// import compose and pipe from lodash library for writing cleaner functions calls wrapped inside function calls
+import { compose, pipe } from 'lodash/fp';
 
 // Transforming a string with string concatenation
 let input = "  Javascript  ";
