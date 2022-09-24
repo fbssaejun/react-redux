@@ -1,11 +1,13 @@
 import store from './store';
+import * as actions from './actionTypes';
 
+//Store gets subscribed
 const unsubscribe = store.subscribe(() => {
   console.log("Store changed!", store.getState());
 })
 
 store.dispatch({
-  type: "bugAdded",
+  type: actions.BUG_ADDED,
   payload: {
     description: "bug1"
   }
@@ -22,10 +24,11 @@ console.log(store.getState())
 ]
 */
 
+//Unsubscribe from store logging events
 unsubscribe()
 
 store.dispatch({
-  type: "bugRemoved",
+  type: actions.BUG_REMOVED,
   payload: {
     id: 1
   }
