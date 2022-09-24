@@ -1,38 +1,43 @@
-import store from './store';
-import { bugAdded, bugRemoved, bugResolved } from './actions';
+// import store from './store';
+// import { bugAdded, bugRemoved, bugResolved } from './actions';
 
-//Store gets subscribed
-const unsubscribe = store.subscribe(() => {
-  console.log("Store changed!", store.getState());
-})
+// //Store gets subscribed
+// const unsubscribe = store.subscribe(() => {
+//   console.log("Store changed!", store.getState());
+// })
 
-store.dispatch(bugAdded("bug 1"))
-/*
-[
-  {
-    description: "bug1",
-    id:1,
-    resolved: false
-  }
-]
-*/
+// store.dispatch(bugAdded("bug 1"))
+// /*
+// [
+//   {
+//     description: "bug1",
+//     id:1,
+//     resolved: false
+//   }
+// ]
+// */
 
-store.dispatch(bugResolved(1))
-/*
-[
-  {
-    description: "bug1",
-    id:1,
-    resolved: true
-  }
-]
-*/
+// store.dispatch(bugResolved(1))
+// /*
+// [
+//   {
+//     description: "bug1",
+//     id:1,
+//     resolved: true
+//   }
+// ]
+// */
 
 
-//Unsubscribe from store logging events
-unsubscribe()
+// //Unsubscribe from store logging events
+// unsubscribe()
 
-store.dispatch(bugRemoved("bug 1"))
-/*
-[]
-*/
+// store.dispatch(bugRemoved("bug 1"))
+// /*
+// []
+// */
+
+
+import store from './customStore';
+store.state = 1;
+console.log(store.getState()) // => { state:1, getState: function(){...} }
