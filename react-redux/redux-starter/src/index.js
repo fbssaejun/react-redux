@@ -1,56 +1,13 @@
-// import store from './store';
-// import { bugAdded, bugRemoved, bugResolved } from './actions';
+import configureStore from './store/configureStore';
+import * as actions from './store/bugs';
 
-// //Store gets subscribed
-// const unsubscribe = store.subscribe(() => {
-//   console.log("Store changed!", store.getState());
-// })
+const store = configureStore()
 
-// store.dispatch(bugAdded("bug 1"))
-// /*
-// [
-//   {
-//     description: "bug1",
-//     id:1,
-//     resolved: false
-//   }
-// ]
-// */
-
-// store.dispatch(bugResolved(1))
-// /*
-// [
-//   {
-//     description: "bug1",
-//     id:1,
-//     resolved: true
-//   }
-// ]
-// */
-
-
-// //Unsubscribe from store logging events
-// unsubscribe()
-
-// store.dispatch(bugRemoved("bug 1"))
-// /*
-// []
-// */
-
-
-import customStore from './customStore';
-import * as actions from './actions';
-
-customStore.subscribe(() => {
+store.subscribe(() => {
   console.log("Store changed!")
 })
 
-customStore.dispatch(actions.bugAdded("bug 1"))
-console.log(customStore.getState())
-/*
-{
-  id: 1,
-  desciprtion: "bug 1",
-  resolved: false
-}
-*/
+store.dispatch(actions.bugAdded("bug 1"))
+store.dispatch(actions.bugAdded("bug 2"))
+store.dispatch(actions.bugAdded("bug 3"))
+store.dispatch(actions.bugResolved(1))
