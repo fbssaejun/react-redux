@@ -38,6 +38,15 @@
 // */
 
 
-import store from './customStore';
-store.state = 1;
-console.log(store.getState()) // => { state:1, getState: function(){...} }
+import customStore from './customStore';
+import * as actions from './actions';
+
+customStore.dispatch(actions.bugAdded("bug 1"))
+console.log(customStore.getState())
+/*
+{
+  id: 1,
+  desciprtion: "bug 1",
+  resolved: false
+}
+*/
