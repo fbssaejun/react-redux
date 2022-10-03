@@ -1,30 +1,31 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// Action creators
-export const bugAdded = createAction("bugAdded")
-export const bugResolved = createAction("bugResolved")
-export const bugRemoved = createAction("bugRemoved")
-
-// Reducer
 let lastId = 0;
 
-export default createReducer([], {
-  // key: value
-  // actions: functions (event => event handler)
-  [bugAdded.type]: (bugs, action) => {
-    bugs.push({
-      id: ++lastId,
-      description: action.payload.description,
-      resolved: false
-    })
-  },
+const slice = createSlice({
+  name: 'bugs',
+  initialState: [],
+  reducers: {
+    bugAdded: (bugs, action) => {
+      bugs.push({
+        id: ++lastId,
+        description: action.payload.description,
+        resolved: false
+      })
+    },
 
-  [bugResolved.type]: (bugs, action) => {
-    const index = bugs.findIndex(bug => bug.id === action.payload.id)
-    bugs[index].resolved = true
-  },
+    bugResolved: (bugs, action) => {
+      const index = bugs.findIndex(bug => bug.id === action.payload.id)
+      bugs[index].resolved = true
+    },
 
-  [bugRemoved.type]: (bugs, action) => {
-    bugs.filter(bug => bug.id !== action.payload.id)
+    bugRemoved: (bugs, action) => {
+      bugs.filter(bug => bug.id !== action.payload.id)
+    }
   }
 })
+
+export const { bugAdded, bugRemoved, bugResolved } = slice.actions
+export default slice.reducer
+
+
